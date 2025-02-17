@@ -30,7 +30,7 @@ export async function getNFTData (req: Request, res: Response) {
 export async function getNFTGallery (req: Request, res: Response) {
   try {
     const { owner } = req.params;
-    const nftsData = await NFT.find({ owner }).exec();
+    const nftsData = await NFT.find({ owner }).sort({_id: -1}).exec();
     console.log('nftdata; ', nftsData);
     res.status(200).json(nftsData);
   } catch (error) {
